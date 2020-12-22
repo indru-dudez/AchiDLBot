@@ -32,9 +32,9 @@ from hachoir.parser import createParser
 from PIL import Image
 
 
-@pyrogram.Client.on_message(pyrogram.Filters.command(["convert2audio"]))
+@pyrogram.Client.on_message(pyrogram.Filters.command(["getaudio@SINNER_MX_bot"]))
 def convert_to_audio(bot, update):
-    TRChatBase(update.from_user.id, update.text, "convert2audio")
+    TRChatBase(update.from_user.id, update.text, "getaudio@SINNER_MX_bot")
     if str(update.from_user.id) not in Config.SUPER_DLBOT_USERS:
         bot.send_message(
             chat_id=update.chat.id,
