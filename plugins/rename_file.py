@@ -32,9 +32,9 @@ from hachoir.parser import createParser
 from PIL import Image
 
 
-@pyrogram.Client.on_message(pyrogram.Filters.command(["rename"]))
+@pyrogram.Client.on_message(pyrogram.Filters.command(["rename@SINNER_MX_bot"]))
 def rename_doc(bot, update):
-    TRChatBase(update.from_user.id, update.text, "rename")
+    TRChatBase(update.from_user.id, update.text, "rename@SINNER_MX_bot")
     if str(update.from_user.id) not in Config.SUPER3X_DLBOT_USERS:
         bot.send_message(
             chat_id=update.chat.id,
