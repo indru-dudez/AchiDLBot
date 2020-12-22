@@ -28,9 +28,9 @@ from helper_funcs.chat_base import TRChatBase
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 
 
-@pyrogram.Client.on_message(pyrogram.Filters.command(["unzip"]))
+@pyrogram.Client.on_message(pyrogram.Filters.command(["un7z@SINNER_MX_bot"]))
 def unzip(bot, update):
-    TRChatBase(update.from_user.id, update.text, "unzip")
+    TRChatBase(update.from_user.id, update.text, "un7z@SINNER_MX_bot")
     if str(update.from_user.id) not in Config.SUPER7X_DLBOT_USERS:
         bot.send_message(
             chat_id=update.chat.id,
