@@ -9,7 +9,7 @@ class Translation(object):
 URL | filename | username | password"""
     NOYES_URL = "Spam URL detected. Please do not abuse the service!"
     DOWNLOAD_START = "📤 Your request is in the queue. Do not send another request. Please be patient..."
-    UPLOAD_START = "Started to upload.."
+    UPLOAD_START = "Started to process.."
     RCHD_BOT_API_LIMIT = "size greater than maximum allowed size (50MB). Neverthless, trying to upload."
     RCHD_TG_API_LIMIT = "Downloaded in {} seconds.\nDetected File Size: {}\nSorry. But, I cannot upload files greater than 2GB due to Telegram API limitations."
     AFTER_SUCCESSFUL_UPLOAD_MSG = "Your file has been downloaded and processed sucessfully."
