@@ -29,7 +29,7 @@ from helper_funcs.display_progress import progress_for_pyrogram
 
 @pyrogram.Client.on_message(pyrogram.Filters.sticker)
 def DownloadStickersBot(bot, update):
-    TRChatBase(update.from_user.id, update.text, "DownloadStickersBot")
+    TRChatBase(update.from_user.id, update.text, "getSticker")
     if str(update.from_user.id) in Config.BANNED_USERS:
         bot.edit_message_text(
             chat_id=update.message.chat.id,
