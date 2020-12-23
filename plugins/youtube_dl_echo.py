@@ -92,7 +92,7 @@ def echo(bot, update):
                 l = entity.length
                 url = url[o:o + l]
     try:
-        if ("hotstar.com" in url) and (Config.HTTP_PROXY != ""):
+        if ("hotstar" in url) and (Config.HTTP_PROXY != ""):
             command_to_exec = [
                 "youtube-dl",
                 "--no-warnings",
