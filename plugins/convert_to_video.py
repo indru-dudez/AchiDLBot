@@ -1,3 +1,6 @@
+#!/usr/bin/env pytjon3
+#-*- coding: utf-8 -*-
+# (c) shrimadhav U K
 
 # the logging things
 import logging
@@ -32,33 +35,29 @@ from PIL import Image
 
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["convert2video@SINNER_MX_bot"]))
-async def convert_to_video(bot, update):
-    if update.from_user.id in Config.BANNED_USERS:
-        await bot.send_message(
+def convert_to_video(bot, update):
+    TRChatBase(update.from_user.id, update.text, "convert2video@SINNER_MX_bot")
+    if str(update.from_user.id) not in Config.SUPER_DLBOT_USERS:
+        bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.BANNED_USER_TEXT,
+            text=Translation.NOT_AUTH_USER_TEXT,
             reply_to_message_id=update.message_id
         )
         return
-    TRChatBase(update.from_user.id, update.text, "convert2video@SINNER_MX_bot")
     if update.reply_to_message is not None:
         description = Translation.CUSTOM_CAPTION_UL_FILE
         download_location = Config.DOWNLOAD_LOCATION + "/"
-        a = await bot.send_message(
+        a = bot.send_message(
             chat_id=update.chat.id,
             text=Translation.DOWNLOAD_START,
             reply_to_message_id=update.message_id
         )
         c_time = time.time()
-        the_real_download_location = await bot.download_media(
+        the_real_download_location = bot.download_media(
             message=update.reply_to_message,
             file_name=download_location,
             progress=progress_for_pyrogram,
-            progress_args=(
-                Translation.DOWNLOAD_START,
-                a,
-                c_time
-            )
+            progress_args=(Translation.DOWNLOAD_START, a.message_id, update.chat.id, c_time)
         )
         if the_real_download_location is not None:
             bot.edit_message_text(
@@ -67,11 +66,11 @@ async def convert_to_video(bot, update):
                 message_id=a.message_id
             )
             # don't care about the extension
-           # await bot.edit_message_text(
-              #  text=Translation.UPLOAD_START,
-             #   chat_id=update.chat.id,
-            #    message_id=a.message_id
-          #  )
+            bot.edit_message_text(
+                text=Translation.UPLOAD_START,
+                chat_id=update.chat.id,
+                message_id=a.message_id
+            )
             logger.info(the_real_download_location)
             # get the correct width, height, and duration for videos greater than 10MB
             # ref: message from @BotSupport
