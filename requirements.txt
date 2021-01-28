@@ -1,5 +1,5 @@
 requests
-youtube-dl
+git+https://gitlab.com/magneto261290/youtube-dl
 git+git://github.com/google/chatbase-python.git
 tgcrypto
 Pillow
